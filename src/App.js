@@ -38,7 +38,7 @@ export default class App extends React.Component {
   render() {
     return (
       <section className="todoapp">
-        <Add />
+        <Add createTodo={this.createTodo} />
         <section className="main" style={{display: 'block'}}>
           <List />
         </section>
