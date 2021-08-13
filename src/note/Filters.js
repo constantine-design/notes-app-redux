@@ -32,7 +32,7 @@ export default class Filters extends React.Component {
           <li>
             <a
               href="#completed"
-              className={ this.props.showTodo==="completed" ? "selected" : ""  }
+              className={ this.props.show==="completed" ? "selected" : ""  }
               onClick={ (e) => this.props.showTodo("completed") }
             >
               Completed
