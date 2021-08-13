@@ -40,7 +40,7 @@ export default class App extends React.Component {
       <section className="todoapp">
         <Add createTodo={this.createTodo} />
         <section className="main" style={{display: 'block'}}>
-          <List />
+          <List todos={ this.state.todos } />
         </section>
         <Filters />
       </section>
