@@ -16,7 +16,7 @@ export default class App extends React.Component {
   }
 
   createTodo = (title) => {
-    this.setState({
+    if (title.trim()) this.setState({
       todos: [
         ...this.state.todos,
         {id: Date.now(), title, completed: false}
@@ -62,6 +62,15 @@ export default class App extends React.Component {
     );
   }
 
+  makeAllTodo = (m) => {
+    this.setState({
+      todos: this.state.todos.map(
+          item => { item.completed=m; return item; }
+        )
+      }
+    );
+  }
+
   editTodo = (id, e) => {
     this.setState({
       todos: this.state.todos.map(
@@ -89,6 +98,7 @@ export default class App extends React.Component {
             show={ this.state.show }
             todos={ this.state.todos }
             toggleTodo={ this.toggleTodo }
+            makeAllTodo={this.makeAllTodo}
             remooveTodo={ this.remooveTodo }
             editTodo={ this.editTodo }
           />
