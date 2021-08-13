@@ -11,6 +11,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
         todos: [],
+        show: 'all',
     };
   }
 
@@ -42,6 +43,29 @@ export default class App extends React.Component {
     );
   }
 
+  clearCompletedTodo = () => {
+    this.setState({
+      todos: this.state.todos.filter ( (x) => x.completed == false )
+      }
+    );alert();
+  }
+
+  doneTodo = (id) => {
+    this.setState({
+      todos: this.state.todos.map(
+        item =>
+          item.id === id ?
+          {...item, completed: !item.completed} :
+          item
+          )
+      }
+    );
+  }
+
+  showTodo = (s) => {
+    this.setState({ show: s });
+  }
+
   render() {
     return (
       <section className="todoapp">
@@ -50,12 +74,17 @@ export default class App extends React.Component {
         />
         <section className="main" style={{display: 'block'}} >
           <List
+            show={ this.state.show }
             todos={ this.state.todos }
-            toggleTodo={this.toggleTodo}
-            remooveTodo={this.remooveTodo}
+            toggleTodo={ this.toggleTodo }
+            remooveTodo={ this.remooveTodo }
           />
         </section>
-        <Filters />
+        <Filters
+          todos={ this.state.todos }
+          showTodo={ this.showTodo }
+          clearCompletedTodo={ this.clearCompletedTodo }
+        />
       </section>
     );
   }
