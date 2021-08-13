@@ -26,7 +26,7 @@ export default class Add extends React.Component {
             autoFocus
             value={this.state.value}
             onChange={(e) => this.setState({value: e.target.value})}
-            onKeyPress={this.onKeyPress}
+            onKeyPress={ (e) =>  this.onKeyPress(e) }
           />
         </header>
     );

@@ -1,9 +1,9 @@
 import React from "react";
 
 export default class Filters extends React.Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props)
-  }
+  }*/
   render() {
     return (
       <footer className="footer" style={{display: 'block'}}>
