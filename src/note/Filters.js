@@ -6,15 +6,15 @@ export default class Filters extends React.Component {
       <footer className="footer" style={{display: 'block'}}>
         <span className="todo-count">
           <strong>
-            { this.props.todos.filter ( (x) => x.completed == false ).length }
+            { this.props.todos.filter ( (x) => x.completed === false ).length }
           </strong>
           &nbsp;items left
         </span>
         <ul className="filters">
           <li>
             <a
-              href="#"
-              className={ this.props.show=="all" ? "selected" : "dd"  }
+              href="#all"
+              className={ this.props.show==="all" ? "selected" : ""  }
               onClick={ (e) => this.props.showTodo("all") }
             >
               All
@@ -22,8 +22,8 @@ export default class Filters extends React.Component {
           </li>
           <li>
             <a
-              href="#"
-              className={ this.props.show=="active" ? "selected" : ""  }
+              href="#selected"
+              className={ this.props.show==="active" ? "selected" : ""  }
               onClick={ (e) => this.props.showTodo("active") }
             >
               Active
@@ -31,8 +31,8 @@ export default class Filters extends React.Component {
           </li>
           <li>
             <a
-              href="#"
-              className={ this.props.showTodo=="completed" ? "selected" : ""  }
+              href="#completed"
+              className={ this.props.showTodo==="completed" ? "selected" : ""  }
               onClick={ (e) => this.props.showTodo("completed") }
             >
               Completed
@@ -43,7 +43,7 @@ export default class Filters extends React.Component {
           className="clear-completed"
           onClick={ (e) => this.props.clearCompletedTodo() }
           style={{
-            display: this.props.todos.filter(x=>x.completed==true).length ? "block" : "none"
+            display: this.props.todos.filter(x=>x.completed===true).length ? "block" : "none"
           }}
         >
           Clear completed

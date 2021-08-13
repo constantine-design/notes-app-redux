@@ -3,8 +3,8 @@ import React from "react";
 export default class List extends React.Component {
   render() {
     let filteredTodoes = this.props.todos;
-    if ( this.props.show === "active") filteredTodoes = this.props.todos.filter ( (x) => x.completed == false );
-    if ( this.props.show === "completed") filteredTodoes = this.props.todos.filter ( (x) => x.completed == true );
+    if ( this.props.show === "active") filteredTodoes = this.props.todos.filter ( (x) => x.completed === false );
+    if ( this.props.show === "completed") filteredTodoes = this.props.todos.filter ( (x) => x.completed === true );
     return (
       <React.Fragment>
         <input id="toggle-all" className="toggle-all" type="checkbox" />

@@ -45,7 +45,7 @@ export default class App extends React.Component {
 
   clearCompletedTodo = () => {
     this.setState({
-      todos: this.state.todos.filter ( (x) => x.completed == false )
+      todos: this.state.todos.filter ( (x) => x.completed === false )
       }
     );
   }
