@@ -1,10 +1,6 @@
 import React from "react";
 
 export default class List extends React.Component {
-  /*constructor(props) {
-    super(props);
-    this.props = props;
-  }*/
   render() {
     let filteredTodoes = this.props.todos;
     if ( this.props.show === "active") filteredTodoes = this.props.todos.filter ( (x) => x.completed == false );
@@ -20,8 +16,13 @@ export default class List extends React.Component {
                 className={ todos.completed ? "completed" : "" }
               >
                 <div className="view">
-                  <input className="toggle" type="checkbox" checked={ todos.completed } onClick={ (e) => this.props.toggleTodo(todos.id) }/>
-                  <label>{ todos.title }</label>
+                  <input className="toggle" type="checkbox" checked={ todos.completed } onChange={ (e) => this.props.toggleTodo(todos.id) }/>
+                  <input
+                    className="todo"
+                    type="text"
+                    value={ todos.title }
+                    onChange={ (e) => this.props.editTodo(todos.id, e) }
+                  />
                   <button className="destroy" onClick={ (e) => this.props.remooveTodo(todos.id) } />
                 </div>
               </li>

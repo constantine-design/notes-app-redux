@@ -47,7 +47,7 @@ export default class App extends React.Component {
     this.setState({
       todos: this.state.todos.filter ( (x) => x.completed == false )
       }
-    );alert();
+    );
   }
 
   doneTodo = (id) => {
@@ -56,6 +56,18 @@ export default class App extends React.Component {
         item =>
           item.id === id ?
           {...item, completed: !item.completed} :
+          item
+          )
+      }
+    );
+  }
+
+  editTodo = (id, e) => {
+    this.setState({
+      todos: this.state.todos.map(
+        item =>
+          item.id === id ?
+          {...item, title: e.target.value} :
           item
           )
       }
@@ -78,10 +90,12 @@ export default class App extends React.Component {
             todos={ this.state.todos }
             toggleTodo={ this.toggleTodo }
             remooveTodo={ this.remooveTodo }
+            editTodo={ this.editTodo }
           />
         </section>
         <Filters
           todos={ this.state.todos }
+          show={ this.state.show }
           showTodo={ this.showTodo }
           clearCompletedTodo={ this.clearCompletedTodo }
         />
