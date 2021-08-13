@@ -83,7 +83,8 @@ export default class App extends React.Component {
     );
   }
 
-  showTodo = (s) => {
+  showTodo = (s, e) => {
+    e.preventDefault();
     this.setState({ show: s });
   }
 

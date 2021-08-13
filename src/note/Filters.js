@@ -15,7 +15,7 @@ export default class Filters extends React.Component {
             <a
               href="#all"
               className={ this.props.show==="all" ? "selected" : ""  }
-              onClick={ (e) => this.props.showTodo("all") }
+              onClick={ (e) => this.props.showTodo("all", e) }
             >
               All
             </a>
@@ -24,7 +24,7 @@ export default class Filters extends React.Component {
             <a
               href="#selected"
               className={ this.props.show==="active" ? "selected" : ""  }
-              onClick={ (e) => this.props.showTodo("active") }
+              onClick={ (e) => this.props.showTodo("active", e) }
             >
               Active
             </a>
@@ -33,7 +33,7 @@ export default class Filters extends React.Component {
             <a
               href="#completed"
               className={ this.props.show==="completed" ? "selected" : ""  }
-              onClick={ (e) => this.props.showTodo("completed") }
+              onClick={ (e) => this.props.showTodo("completed", e) }
             >
               Completed
             </a>
