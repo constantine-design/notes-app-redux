@@ -1,11 +1,15 @@
 import './App.css';
 import React from "react";
+
+import { connect } from "react-redux";
+import { addTodo } from "./store/actions";
+
 import Add from "./components/Add.js";
 import List from "./components/List.js";
 import Filters from "./components/Filters.js";
 
 
-export default class App extends React.Component {
+class App extends React.Component {
 
   constructor(props) {
     super(props);
@@ -103,3 +107,8 @@ export default class App extends React.Component {
   }
 
 }
+
+export default connect(
+  { addTodo },
+  (state) => ({ todos: state.tods })
+)(App);
