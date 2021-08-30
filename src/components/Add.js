@@ -5,14 +5,14 @@ export default class Add extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        value: ""
+        newTitleValue: ""
     }
   }
 
   onKeyPress = (e) => {
     if(e.key === "Enter") {
-        this.props.createTodo(this.state.value);
-        this.setState({value: ""});
+        this.props.createTodo(this.state.newTitleValue);
+        this.setState({newTitleValue: ""});
     }
   }
 
@@ -24,8 +24,8 @@ export default class Add extends React.Component {
             className="new-todo"
             placeholder="What needs to be done?"
             autoFocus
-            value={this.state.value}
-            onChange={(e) => this.setState({value: e.target.value})}
+            value={this.state.newTitleValue}
+            onChange={(e) => this.setState({newTitleValue: e.target.value})}
             onKeyPress={this.onKeyPress}
           />
         </header>
