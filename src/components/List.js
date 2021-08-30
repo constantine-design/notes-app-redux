@@ -6,7 +6,7 @@ export default class List extends React.Component {
     let filteredTodoes = this.props.todos;
     if ( this.props.show === "active") filteredTodoes = this.props.todos.filter ( (x) => x.completed === false );
     if ( this.props.show === "completed") filteredTodoes = this.props.todos.filter ( (x) => x.completed === true );
-    const allTodosTrue = this.props.todos.every(todo=>todo.completed===true);
+    const allTodosTrue = this.props.todos.every(todo=>todo.completed);
     return (
       <React.Fragment>
         <input
