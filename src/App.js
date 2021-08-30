@@ -1,8 +1,8 @@
 import './App.css';
 import React from "react";
-import Add from "./note/Add.js";
-import List from "./note/List.js";
-import Filters from "./note/Filters.js";
+import Add from "./components/Add.js";
+import List from "./components/List.js";
+import Filters from "./components/Filters.js";
 
 
 export default class App extends React.Component {
@@ -45,19 +45,7 @@ export default class App extends React.Component {
 
   clearCompletedTodo = () => {
     this.setState({
-      todos: this.state.todos.filter ( (x) => x.completed === false )
-      }
-    );
-  }
-
-  doneTodo = (id) => {
-    this.setState({
-      todos: this.state.todos.map(
-        item =>
-          item.id === id ?
-          {...item, completed: !item.completed} :
-          item
-          )
+      todos: this.state.todos.filter ( (x) => !x.completed )
       }
     );
   }
@@ -65,18 +53,18 @@ export default class App extends React.Component {
   makeAllTodo = (m) => {
     this.setState({
       todos: this.state.todos.map(
-          item => { item.completed=m; return item; }
+          item => ({ ...item, completed: m })
         )
       }
     );
   }
 
-  editTodo = (id, e) => {
+  editTodo = (id, newval) => {
     this.setState({
       todos: this.state.todos.map(
         item =>
           item.id === id ?
-          {...item, title: e.target.value} :
+          {...item, title: newval} :
           item
           )
       }
@@ -113,4 +101,5 @@ export default class App extends React.Component {
       </section>
     );
   }
+
 }

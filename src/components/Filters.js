@@ -43,7 +43,7 @@ export default class Filters extends React.Component {
           className="clear-completed"
           onClick={ (e) => this.props.clearCompletedTodo() }
           style={{
-            display: this.props.todos.filter(x=>x.completed===true).length ? "block" : "none"
+            display: this.props.todos.filter((x)=>(x.completed)).length ? "block" : "none"
           }}
         >
           Clear completed
