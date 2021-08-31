@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import { toggleTodo, remooveTodo, editTodo} from "../store/actions";
 
-export default class Todo extends React.Component {
+class Todo extends React.Component {
 
   constructor(props) {
     super(props);
@@ -35,3 +37,8 @@ export default class Todo extends React.Component {
   }
 
 }
+
+export default connect(
+  null,
+  { toggleTodo, remooveTodo, editTodo}
+)(Todo);

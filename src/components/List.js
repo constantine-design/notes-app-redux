@@ -1,7 +1,9 @@
 import React from "react";
 import Todo from "./Todo.js";
+import { connect } from "react-redux";
+import { toggleTodo, remooveTodo, makeAllTodo, editTodo, showTodo, clearCompletedTodo } from "../store/actions";
 
-export default class List extends React.Component {
+class List extends React.Component {
   render() {
     let filteredTodoes = this.props.todos;
     if ( this.props.show === "active") filteredTodoes = this.props.todos.filter ( (x) => x.completed === false );
@@ -23,9 +25,6 @@ export default class List extends React.Component {
               <Todo
                 key={ todo.id }
                 todo={ todo }
-                toggleTodo = { this.props.toggleTodo }
-                editTodo = { this.props.editTodo }
-                remooveTodo = { this.props.remooveTodo }
               />
             )
           }
@@ -34,3 +33,11 @@ export default class List extends React.Component {
     );
   }
 }
+
+export default connect(
+  (state) => ({
+    todos: state.todos,
+    show: state.show
+  }),
+  { toggleTodo, remooveTodo, makeAllTodo, editTodo, showTodo, clearCompletedTodo }
+)(List);

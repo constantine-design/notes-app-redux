@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import { showTodo, clearCompletedTodo } from "../store/actions";
 
-export default class Filters extends React.Component {
+class Filters extends React.Component {
   render() {
     return (
       <footer className="footer" style={{display: 'block'}}>
@@ -15,7 +17,7 @@ export default class Filters extends React.Component {
             <a
               href="#all"
               className={ this.props.show==="all" ? "selected" : ""  }
-              onClick={ (e) => this.props.showTodo("all", e) }
+              onClick={ (e) => { e.preventDefault(); this.props.showTodo("all"); } }
             >
               All
             </a>
@@ -24,7 +26,7 @@ export default class Filters extends React.Component {
             <a
               href="#selected"
               className={ this.props.show==="active" ? "selected" : ""  }
-              onClick={ (e) => this.props.showTodo("active", e) }
+              onClick={ (e) => { e.preventDefault(); this.props.showTodo("active"); } }
             >
               Active
             </a>
@@ -33,7 +35,7 @@ export default class Filters extends React.Component {
             <a
               href="#completed"
               className={ this.props.show==="completed" ? "selected" : ""  }
-              onClick={ (e) => this.props.showTodo("completed", e) }
+              onClick={ (e) => { e.preventDefault(); this.props.showTodo("completed"); } }
             >
               Completed
             </a>
@@ -52,3 +54,11 @@ export default class Filters extends React.Component {
     );
   }
 }
+
+export default connect(
+  (state) => ({
+    todos: state.todos,
+    show: state.show
+  }),
+  { showTodo, clearCompletedTodo }
+)(Filters);
