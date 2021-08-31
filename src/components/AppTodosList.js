@@ -3,7 +3,7 @@ import Todo from "./Todo.js";
 import { connect } from "react-redux";
 import { makeAllTodo } from "../store/actions";
 
-function List(props) {
+function AppTodosList(props) {
   let filteredTodoes = props.todos;
   if ( props.show === "active") filteredTodoes = props.todos.filter ( (x) => x.completed === false );
   if ( props.show === "completed") filteredTodoes = props.todos.filter ( (x) => x.completed === true );
@@ -38,4 +38,4 @@ export default connect(
     show: state.show
   }),
   { makeAllTodo }
-)(List);
+)(AppTodosList);

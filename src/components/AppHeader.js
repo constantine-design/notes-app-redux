@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addTodo } from "../store/actions";
 
-function Add(props) {
+function AppHeader(props) {
   const [newTitleValue, setNewTitleValue] = useState("");
   const onKeyPress = (e) => {
     if(e.key === "Enter") {
@@ -30,4 +30,4 @@ export default connect(
     todos: state.todos,
   }),
   { addTodo }
-)(Add);
+)(AppHeader);

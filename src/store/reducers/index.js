@@ -44,7 +44,7 @@ const reducer = (state = initialState, {type, payload}) => {
               item
           )
         };
-      case 'SHOW_TODO' :
+      case 'SET_FILTER_TODO' :
         return {...state,
           show: payload
         };

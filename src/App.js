@@ -1,17 +1,17 @@
 import './App.css';
 import React from "react";
-import Add from "./components/Add.js";
-import List from "./components/List.js";
-import Filters from "./components/Filters.js";
+import AppHeader from "./components/AppHeader.js";
+import AppTodosList from "./components/AppTodosList.js";
+import AppFooter from "./components/AppFooter.js";
 
 export default function App() {
   return (
     <section className="todoapp">
-      <Add />
+      <AppHeader />
       <section className="main" style={{display: 'block'}} >
-        <List />
+        <AppTodosList />
       </section>
-      <Filters />
+      <AppFooter />
     </section>
   );
 }

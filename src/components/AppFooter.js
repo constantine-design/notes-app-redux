@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { showTodo, clearCompletedTodo } from "../store/actions";
+import { setFilterTodo, clearCompletedTodo } from "../store/actions";
 
-function Filters(props) {
+function AppFooter(props) {
   const filterOnClick = (e, action) => {
     e.preventDefault();
-    props.showTodo(action);
+    props.setFilterTodo(action);
   }
   return (
     <footer className="footer" style={{display: 'block'}}>
@@ -62,5 +62,5 @@ export default connect(
     todos: state.todos,
     show: state.show
   }),
-  { showTodo, clearCompletedTodo }
-)(Filters);
+  { setFilterTodo, clearCompletedTodo }
+)(AppFooter);
