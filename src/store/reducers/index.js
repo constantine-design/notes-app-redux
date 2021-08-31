@@ -1,5 +1,5 @@
 const initialState = {
-    todos: [{completed: false, id: 1630395714773, title: "1"}],
+    todos: [{completed: false, id: 1630395714773, title: "My first todo"}],
     show: "all"
 };
 

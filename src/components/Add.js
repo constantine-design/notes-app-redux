@@ -1,38 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addTodo } from "../store/actions";
 
-class Add extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-        newTitleValue: ""
-    }
-  }
-
-  onKeyPress = (e) => {
+function Add(props) {
+  const [newTitleValue, setNewTitleValue] = useState("");
+  const onKeyPress = (e) => {
     if(e.key === "Enter") {
-        this.props.addTodo(this.state.newTitleValue);
-        this.setState({newTitleValue: ""});
+        props.addTodo(newTitleValue);
+        setNewTitleValue("");
     }
   }
-
-  render() {
-    return (
-        <header className="header">
-          <h1>todos</h1>
-          <input
-            className="new-todo"
-            placeholder="What needs to be done?"
-            autoFocus
-            value={this.state.newTitleValue}
-            onChange={(e) => this.setState({newTitleValue: e.target.value})}
-            onKeyPress={this.onKeyPress}
-          />
-        </header>
-    );
-  }
+  return (
+      <header className="header">
+        <h1>todos</h1>
+        <input
+          className="new-todo"
+          placeholder="What needs to be done?"
+          autoFocus
+          value={newTitleValue}
+          onChange={(e) => setNewTitleValue(e.target.value)}
+          onKeyPress={onKeyPress}
+        />
+      </header>
+  );
 }
 
 export default connect(
