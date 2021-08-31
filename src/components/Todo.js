@@ -26,7 +26,7 @@ export default class Todo extends React.Component {
             type="text"
             value={ this.state.titleValue }
             onChange={ (e) => this.setState({titleValue: e.target.value}) }
-            onBlur={ () => this.props.editTodo(this.props.todo.id, this.state.titleValue) }
+            onBlur={ () => this.props.editTodo({id: this.props.todo.id, title: this.state.titleValue}) }
           />
           <button className="destroy" onClick={ (e) => this.props.remooveTodo(this.props.todo.id) } />
         </div>

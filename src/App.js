@@ -2,7 +2,7 @@ import './App.css';
 import React from "react";
 
 import { connect } from "react-redux";
-import { addTodo } from "./store/actions";
+import { toggleTodo, remooveTodo, makeAllTodo, editTodo, showTodo, clearCompletedTodo } from "./store/actions";
 
 import Add from "./components/Add.js";
 import List from "./components/List.js";
@@ -81,26 +81,25 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <section className="todoapp">
-        <Add
-          createTodo={this.createTodo}
-        />
+        <Add />
         <section className="main" style={{display: 'block'}} >
           <List
-            show={ this.state.show }
-            todos={ this.state.todos }
-            toggleTodo={ this.toggleTodo }
-            makeAllTodo={this.makeAllTodo}
-            remooveTodo={ this.remooveTodo }
-            editTodo={ this.editTodo }
+            show={ this.props.show }
+            todos={ this.props.todos }
+            toggleTodo={ this.props.toggleTodo }
+            makeAllTodo={this.props.makeAllTodo}
+            remooveTodo={ this.props.remooveTodo }
+            editTodo={ this.props.editTodo }
           />
         </section>
         <Filters
-          todos={ this.state.todos }
-          show={ this.state.show }
-          showTodo={ this.showTodo }
-          clearCompletedTodo={ this.clearCompletedTodo }
+          todos={ this.props.todos }
+          show={ this.props.show }
+          showTodo={ this.props.showTodo }
+          clearCompletedTodo={ this.props.clearCompletedTodo }
         />
       </section>
     );
@@ -108,7 +107,11 @@ class App extends React.Component {
 
 }
 
+
 export default connect(
-  { addTodo },
-  (state) => ({ todos: state.tods })
+  (state) => ({
+    todos: state.todos,
+    show: state.show
+  }),
+  { toggleTodo, remooveTodo, makeAllTodo, editTodo, showTodo, clearCompletedTodo }
 )(App);

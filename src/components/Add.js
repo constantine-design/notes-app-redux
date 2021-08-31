@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+import { addTodo } from "../store/actions";
 
-export default class Add extends React.Component {
+class Add extends React.Component {
 
   constructor(props) {
     super(props);
@@ -11,7 +13,7 @@ export default class Add extends React.Component {
 
   onKeyPress = (e) => {
     if(e.key === "Enter") {
-        this.props.createTodo(this.state.newTitleValue);
+        this.props.addTodo(this.state.newTitleValue);
         this.setState({newTitleValue: ""});
     }
   }
@@ -31,5 +33,11 @@ export default class Add extends React.Component {
         </header>
     );
   }
-
 }
+
+export default connect(
+  (state) => ({
+    todos: state.todos,
+  }),
+  { addTodo }
+)(Add);

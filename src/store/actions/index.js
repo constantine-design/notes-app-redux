@@ -1,4 +1,7 @@
-
-// export const add = (payload) => ({type: ACTION_ADD, payload});
-
-export const addTodo = (payload) => ({type: 'TODOS_ADD', payload});
+export const addTodo = (payload) => ({type: "ADD_TODO", payload});
+export const toggleTodo = (payload) => ({type: "TOGGLE_TODO", payload});
+export const remooveTodo = (payload) => ({type: "REMOOVE_TODO", payload});
+export const makeAllTodo = (payload) => ({type: "MAKE_ALL_TODO", payload});
+export const clearCompletedTodo = (payload) => ({type: "CLEAR_COMPLETED_TODO", payload});
+export const editTodo = (payload) => ({type: "EDIT_TODO", payload});
+export const showTodo = (payload) => ({type: "SHOW_TODO", payload});
