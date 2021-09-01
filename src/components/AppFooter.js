@@ -4,10 +4,6 @@ import { setFilterTodo, clearCompletedTodo, todoFilterEnum } from "../store/acti
 import FooterButton from "./FooterButton.js";
 
 function AppFooter(props) {
-  const filterOnClick = (e, action) => {
-    e.preventDefault();
-    props.setFilterTodo(action);
-  }
   return (
     <footer className="footer" style={{display: 'block'}}>
       <span className="todo-count">
@@ -17,8 +13,8 @@ function AppFooter(props) {
         &nbsp;items left
       </span>
       <ul className="filters">
-        { Object.values(todoFilterEnum).map(entry=>(
-          <FooterButton filter={entry} />
+        { Object.values(todoFilterEnum).map(val=>(
+          <FooterButton key={val} filter={val} />
         ))}
       </ul>
       <button

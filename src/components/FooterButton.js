@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setFilterTodo, todoFilterEnum } from "../store/actions";
+import { setFilterTodo } from "../store/actions";
 
 function FooterButton(props) {
   const OnClick = (e, action) => {
