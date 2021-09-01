@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setFilterTodo, clearCompletedTodo } from "../store/actions";
+import { setFilterTodo, clearCompletedTodo, todoFilterEnum } from "../store/actions";
+import FooterButton from "./FooterButton.js";
 
 function AppFooter(props) {
   const filterOnClick = (e, action) => {
@@ -11,38 +12,14 @@ function AppFooter(props) {
     <footer className="footer" style={{display: 'block'}}>
       <span className="todo-count">
         <strong>
-          { props.todos.filter ( (x) => x.completed === false ).length }
+          { props.todos.filter ( (x) => !x.completed ).length }
         </strong>
         &nbsp;items left
       </span>
       <ul className="filters">
-        <li>
-          <a
-            href="#all"
-            className={ props.show==="all" ? "selected" : ""  }
-            onClick={ (e) => { filterOnClick(e, "all") } }
-          >
-            All
-          </a>
-        </li>
-        <li>
-          <a
-            href="#selected"
-            className={ props.show==="active" ? "selected" : ""  }
-            onClick={ (e) => { filterOnClick(e, "active") } }
-          >
-            Active
-          </a>
-        </li>
-        <li>
-          <a
-            href="#completed"
-            className={ props.show==="completed" ? "selected" : ""  }
-            onClick={ (e) => { filterOnClick(e, "completed") } }
-          >
-            Completed
-          </a>
-        </li>
+        { Object.values(todoFilterEnum).map(entry=>(
+          <FooterButton filter={entry} />
+        ))}
       </ul>
       <button
         className="clear-completed"

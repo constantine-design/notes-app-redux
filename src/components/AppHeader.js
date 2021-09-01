@@ -5,7 +5,7 @@ import { addTodo } from "../store/actions";
 function AppHeader(props) {
   const [newTitleValue, setNewTitleValue] = useState("");
   const onKeyPress = (e) => {
-    if(e.key === "Enter") {
+    if(e.key === "Enter" && newTitleValue.trim() ) {
         props.addTodo(newTitleValue);
         setNewTitleValue("");
     }
