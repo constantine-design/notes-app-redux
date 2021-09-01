@@ -13,5 +13,5 @@ export const setFilterTodo = (payload) => ({type: SET_FILTER_TODO, payload});
 export const todoFilterEnum = {
   all: "All",
   active: "Active",
-    completed: "Completed"
+  completed: "Completed"
 }
